@@ -1,4 +1,7 @@
-package ru.geekbrains.games.circles;
+package ru.geekbrains.games.game_circles;
+
+import ru.geekbrains.games.common_games_classes.GameCanvas;
+import ru.geekbrains.games.common_games_classes.Sprite;
 
 import java.awt.*;
 
@@ -22,7 +25,7 @@ class Ball extends Sprite {
     }
 
     @Override
-    void update(GameCanvas gameCanvas, float deltaTime) {
+    public void update(GameCanvas gameCanvas, float deltaTime) {
         x += vx * deltaTime;// x = x0 + v * t
         y += vy * deltaTime;
         if(getLeft() < gameCanvas.getLeft()){
@@ -44,7 +47,7 @@ class Ball extends Sprite {
     }
 
     @Override
-    void render(GameCanvas gameCanvas, Graphics g) {
+    public void render(GameCanvas gameCanvas, Graphics g) {
         g.setColor(color);
         g.fillOval((int)getLeft(), (int)getTop(), (int)getWidth(), (int)getHeight());
     }

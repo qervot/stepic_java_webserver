@@ -1,15 +1,18 @@
-package ru.geekbrains.games.circles;
+package ru.geekbrains.games.game_circles;
+
+import ru.geekbrains.games.common_games_classes.GameCanvas;
+import ru.geekbrains.games.common_games_classes.GameObject;
 
 import java.awt.*;
 
-class Background extends Sprite {
+class Background implements GameObject {
 
     private float time;
     private static final float AMPLITUDE = 255f / 2f;
     private Color color;
 
     @Override
-    void update(GameCanvas gameCanvas, float deltaTime) {
+    public void update(GameCanvas gameCanvas, float deltaTime) {
         time += deltaTime;
         int red = Math.round(AMPLITUDE + AMPLITUDE * (float) Math.sin(time * 2f));
         int green = Math.round(AMPLITUDE + AMPLITUDE * (float) Math.sin(time * 3f));
@@ -18,7 +21,7 @@ class Background extends Sprite {
     }
 
     @Override
-    void render(GameCanvas gameCanvas, Graphics g) {
+    public void render(GameCanvas gameCanvas, Graphics g) {
         gameCanvas.setBackground(color);
     }
 }
