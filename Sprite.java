@@ -1,55 +1,58 @@
-package ru.geekbrains.games.circles;
+package ru.geekbrains.games.common_games_classes;
 
 import java.awt.*;
 
-abstract class Sprite {
+@SuppressWarnings("WeakerAccess")
+public class Sprite implements GameObject {
 
-    float x; //центр спрайта
-    float y; //центр спрайта
-    float halfWidth;
-    float halfHeight;
+    protected float x; //центр спрайта
+    protected float y; //центр спрайта
+    protected float halfWidth;
+    protected float halfHeight;
 
-    float getLeft(){
+    public float getLeft(){
         return x - halfWidth;
     }
 
-    void setLeft(float left){
+    public void setLeft(float left){
         x = left + halfWidth;
     }
 
-    float getRight(){
+    public float getRight(){
         return x + halfWidth;
     }
 
-    void setRight(float right) {
+    public void setRight(float right) {
         x = right - halfWidth;
     }
 
-    float getTop(){
+    public float getTop(){
         return y - halfHeight;
     }
 
-    void setTop(float top) {
+    public void setTop(float top) {
         y = top + halfHeight;
     }
 
-    float getBottom() {
+    public float getBottom() {
         return y + halfHeight;
     }
 
-    void setBottom(float bottom){
+    public void setBottom(float bottom){
         y = bottom - halfHeight;
     }
 
-    float getWidth(){
+    public float getWidth(){
         return 2f * halfWidth;
     }
 
-    float getHeight(){
+    public float getHeight(){
         return 2f * halfHeight;
     }
 
-    abstract void update(GameCanvas gameCanvas, float deltaTime);
+    @Override
+    public void update(GameCanvas gameCanvas, float deltaTime) {}
 
-    abstract void render(GameCanvas gameCanvas, Graphics g);
+    @Override
+    public void render(GameCanvas gameCanvas, Graphics g){}
 }

@@ -1,17 +1,17 @@
-package ru.geekbrains.games.circles;
+package ru.geekbrains.games.common_games_classes;
 
 import javax.swing.*;
 import java.awt.*;
 
-class GameCanvas extends JPanel {
+public class GameCanvas extends JPanel {
 
     private static final int SLEEPING_TIME = 17;
 
-    private final GameWindow gameWindow;
+    private final CanvasPaintListener listener;
     private long lastTime;
 
-    GameCanvas(GameWindow gameWindow){
-        this.gameWindow = gameWindow;
+    public GameCanvas(CanvasPaintListener listener){
+        this.listener = listener;
         lastTime = System.nanoTime();
     }
 
@@ -23,7 +23,7 @@ class GameCanvas extends JPanel {
         float deltaTime = (currentTime - lastTime) * 1e-9f;
         lastTime = currentTime;
 
-        gameWindow.onDrawFrame(this, g, deltaTime);
+        listener.onDrawFrame(this, g, deltaTime);
         try {
             Thread.sleep(SLEEPING_TIME);
         } catch (InterruptedException e) {
@@ -32,19 +32,19 @@ class GameCanvas extends JPanel {
         repaint();
     }
 
-    int getLeft(){
+    public int getLeft(){
         return 0;
     }
 
-    int getRight(){
+    public int getRight(){
         return getWidth() - 1;
     }
 
-    int getTop(){
+    public int getTop(){
         return 0;
     }
 
-    int getBottom(){
+    public int getBottom(){
         return getHeight() - 1;
     }
 }
